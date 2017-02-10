@@ -15,11 +15,9 @@ class Source
 		typeSource = "Unknown";
 		debitSource = 0.0;
 		waterIn = 0.0;
-		
 	}
 	
 //************************************BUILDER : SETTINGS*****************************************
-	
 	public Source (String idSourceBuild, String typeBuild, double debitBuild, double waterInBuild)
 	{
 		idSource = idSourceBuild;
