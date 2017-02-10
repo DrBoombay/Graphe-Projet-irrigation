@@ -1,6 +1,6 @@
 package projectGraphe;
 
-public class mainTest {
+public class MainClass {
 
 	public static void main(String[] args) {
 		
