@@ -3,11 +3,6 @@ package projectGraphe;
 public class MainClass {
 
 	public static void main(String[] args) {
-
-	
-		
-		
-
 		Source S1 = new Source("S1", "Lac", 250.15, 600.02);
 		Parcelle P1 = new Parcelle("P1", 250.15, 900);
 	
