@@ -21,8 +21,36 @@ public class Cannalisation {
 		capacity=capacityP;
 		length=lengthP;
 		flux=fluxP;
-		
-		
+	}
+	public String getId(){
+		return this.id;
+	}
+	public void setId(String id){
+		this.id=id;
+	}
+	
+	public double getCapacity(){
+		return this.capacity;
+	}
+	
+	public void setNom(double capacity){
+		this.capacity=capacity;
+	}
+	
+	
+	public double getLength(){
+		return this.length;
+	}
+	
+	public void setLength(double length){
+		this.length=length;
+	}
+	
+	public double getFlux(){
+		return this.flux;
+	}
+	public void setFlux(double flux){
+		this.flux=flux;
 	}
 
 }
