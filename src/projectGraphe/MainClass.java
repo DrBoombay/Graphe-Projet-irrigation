@@ -29,7 +29,7 @@ public class MainClass {
 		Cannalisation EP = new Cannalisation ("EP", 10.0, 12.13, 0.00);
 		Cannalisation FP = new Cannalisation ("FP", 20.0, 12.13, 0.00);
 		Cannalisation GP = new Cannalisation ("GP", 30.0, 12.13, 0.00);
-
+		VERGE
 		
 //*************************TEST*******************************************
 
