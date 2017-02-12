@@ -5,25 +5,34 @@ public class Cannalisation {
 	protected double length;
 	protected String id;
 	protected double flux;
+	protected int order;
+	
+	
+	
 	
 	
 	//***********************CREATION CONSTRUCTEUR*****************************//
 	public Cannalisation(){
 		capacity =0.0;
-		length =0.0;
+		//length =0.0;
 		id="incoonu";
 		flux=0.0;
+		order =0;
 		
 	}
-	public Cannalisation( String idP ,double capacityP, double lengthP, double fluxP){
+	public Cannalisation( String id ,double capacity, double length, double flux,int order){
 		
-		id=idP;
-		capacity=capacityP;
-		length=lengthP;
-		flux=fluxP;
+		this.id=id;
+		this.capacity=capacity;
+		//this.length=length;
+		this.flux=flux;
+		this.order=order;
 	}
 	
 	/*****************G U E T T E R S *********************/
+	public int getOrder() {
+		return order;
+	}
 	public String getId(){
 		return this.id;
 	}
@@ -32,9 +41,9 @@ public class Cannalisation {
 		return this.capacity;
 	}
 	
-	public double getLength(){
-		return this.length;
-	}
+//	public double getLength(){
+//		return this.length;
+//	}
 	
 	public double getFlux(){
 		return this.flux;
@@ -46,9 +55,9 @@ public class Cannalisation {
 		
 	}
 	
-	public void setLength(double length){
-		this.length=length;
-	}
+//	public void setLength(double length){
+//		this.length=length;
+//	}
 	
 	public void setNom(double capacity){
 		this.capacity=capacity;
@@ -56,6 +65,9 @@ public class Cannalisation {
 	
 	public void setId(String id){
 		this.id=id;
+	}
+	public void setOrder(int order) {
+		this.order = order;
 	}
 
 }
