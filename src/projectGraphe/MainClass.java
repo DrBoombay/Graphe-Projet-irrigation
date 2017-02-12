@@ -11,6 +11,7 @@ public class MainClass {
 		Parcelle E = new Parcelle("E", 10.0, 900);
 		Parcelle F = new Parcelle("F", 20.0, 900);
 		Parcelle G = new Parcelle("G", 30.0, 900);
+
 		Parcelle P = new Parcelle("P", 0.0, 0.0);
 		Cannalisation C1 = new Cannalisation ("AD", 30.0, 12.13, 0.00, A, D);
 		Cannalisation C2 = new Cannalisation ("AE", 15.0, 12.13, 0.00);
@@ -28,10 +29,12 @@ public class MainClass {
 		Cannalisation EP = new Cannalisation ("EP", 10.0, 12.13, 0.00);
 		Cannalisation FP = new Cannalisation ("FP", 20.0, 12.13, 0.00);
 		Cannalisation GP = new Cannalisation ("GP", 30.0, 12.13, 0.00);
+
 		
 //*************************TEST*******************************************
 
 
+		
 	}
 
 }

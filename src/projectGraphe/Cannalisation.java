@@ -1,16 +1,22 @@
 package projectGraphe;
 
+import java.util.ArrayList;
+
 public class Cannalisation {
 	protected double capacity;
 	protected double length;
 	protected String id;
 	protected double flux;
+
 	protected Sommet sommetEntree;
 	protected Sommet sommetSortie;
+
+
 	
 	
 	//***********************CREATION CONSTRUCTEUR*****************************//
 	public Cannalisation(){
+
 		capacity = 0.0;
 		length = 0.0;
 		id = "incoonu";
@@ -28,39 +34,59 @@ public class Cannalisation {
 		sommetEntree = sommetEntreeP;
 		sommetSortie = sommetSortieP;
 
+
 	}
 	
 	public String getId(){
 		return this.id;
 	}
+
 	
 	public void setId(String id){
 		this.id = id;
 	}
+
 	
 	public double getCapacity(){
 		return this.capacity;
 	}
 	
+
 	public void setNom(double capacity){
 		this.capacity = capacity;
+
+	public double getFlux(){
+		return this.flux;
+
 	}
 	
+	/********************* S E T T E R S ****************************/
 	
-	public double getLength(){
-		return this.length;
+	public void setFlux(double flux){
+		this.flux=flux;
 	}
 	
-	public void setLength(double length){
-		this.length = length;
-	}
+
 
 	public double getFlux(){
 		return this.flux;
 	}
 	
-	public void setFlux(double flux){
-		this.flux = flux;
+
+	public void setNom(double capacity){
+		this.capacity=capacity;
+	}
+	
+	public void setId(String id){
+		this.id=id;
 	}
 
+
+	
+	
+	/************************ Tableaux Capacité ************************/
+	
+	
+	ArrayList<Cannalisation> canaSortedByOrder=new ArrayList<Cannalisation>();
+	
 }
