@@ -8,6 +8,7 @@ import java.util.List;
 public class MainClass {
 
 	public static void main(String[] args) {
+
 	
 // Sources et Supersource
 		
@@ -47,6 +48,8 @@ public class MainClass {
 		Cannalisation ep = new Cannalisation ("EP", 10.0, 0.00, e, p);
 		Cannalisation fp = new Cannalisation ("FP", 20.0, 0.00, f, p);
 		Cannalisation gp = new Cannalisation ("GP", 30.0, 0.00, g, p);
+
+
 
 		
 //*************************TEST*******************************************
