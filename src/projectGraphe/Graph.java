@@ -21,17 +21,35 @@ public class Graph {
 	}
 	
 //******************************RECUPERATION DE LA SOURCE AVEC LA PLUS GRANDE CAPACITE RESTANTE**********************************************
+
 	
-	public static Cannalisation start(List<Cannalisation> _source) {
-		Cannalisation source = new Cannalisation ();
+	public static Cannalisation start(List<Cannalisation> sources) {
+		Cannalisation sourceMax = new Cannalisation ();
 		
-		for (int i = 0; i < _source.size(); i++)
+		for (Cannalisation source : sources )
 		{
-			if (_source.get(i).getCapacity() > source.getCapacity())
+			if (source.getCapacity() > sourceMax.getCapacity())
 			{
-				source = _source.get(i);
+				sourceMax = source;
 			}
 		}
-		return source;
+		return sourceMax;
 	}
+	
+//****************************************PARCOURS DU GRAPH ET RECUPERATION DU FLUX MAXIMUM***************************************************
+	
+	/*public static Cannalisation flotMax(List<Cannalisation> sources) {
+		Cannalisation sourceMax = new Cannalisation ();
+		
+		for (Cannalisation source : sources )
+		{
+			if (source.getCapacity() > sourceMax.getCapacity())
+			{
+				sourceMax = source;
+			}
+		}
+		return sourceMax;
+	}*/
+	
+
 }
