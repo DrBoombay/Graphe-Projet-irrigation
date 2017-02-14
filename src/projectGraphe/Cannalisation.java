@@ -54,24 +54,30 @@ public class Cannalisation {
 	
 	/********************* S E T T E R S ****************************/
 	
-	public void setFlux(double flux){
-		this.flux=flux;
+	public void setFlux(double _flux){
+		this.flux = _flux;
 	}		
 
-	public void setNom(double capacity){
-		this.capacity=capacity;
-	}
-	
-	public void setCapacity(double capacity){
-		this.capacity = capacity;
+	public void setCapacity(double _capacity){
+		this.capacity = _capacity;
 	}
 
 	public void setId(String _id){
 		this.id = _id;
 	}
 	
+	public void setSommetEnt(Sommet _sommetEntree){
+		this.sommetEntree = _sommetEntree;
+	}
 	
-	/************************ Tableaux Capacité ************************/
+	public void setSommetSort(Sommet _sommetSortie){
+		this.sommetSortie = _sommetSortie;
+	}
+	
+	
+	
+	
+	/************************ Tableaux Capacite ************************/
 	
 	
 	ArrayList<Cannalisation> canaSortedByOrder=new ArrayList<Cannalisation>();

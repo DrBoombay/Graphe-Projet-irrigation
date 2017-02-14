@@ -1,6 +1,8 @@
 package projectGraphe;
 
-class Graph {
+import java.util.List;
+
+public class Graph {
 	
 	public boolean resteDebit(Cannalisation C)
 	{
@@ -18,5 +20,18 @@ class Graph {
 		return fluxR;
 	}
 	
+//******************************RECUPERATION DE LA SOURCE AVEC LA PLUS GRANDE CAPACITE RESTANTE**********************************************
 	
+	public static Cannalisation start(List<Cannalisation> _source) {
+		Cannalisation source = new Cannalisation ();
+		
+		for (int i = 0; i < _source.size(); i++)
+		{
+			if (_source.get(i).getCapacity() > source.getCapacity())
+			{
+				source = _source.get(i);
+			}
+		}
+		return source;
+	}
 }
