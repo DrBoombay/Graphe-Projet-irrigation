@@ -1,39 +1,62 @@
 package projectGraphe;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MainClass {
 
 	public static void main(String[] args) {
-		Sommet S = new Sommet("S");
-		Sommet A = new Sommet ("A");
-		Sommet B = new Sommet("B");
-		Source C = new Source("C", "Village 3", 20.0, 600.02);
-		Parcelle D = new Parcelle("D", 30.0, 900);
-		Parcelle E = new Parcelle("E", 10.0, 900);
-		Parcelle F = new Parcelle("F", 20.0, 900);
-		Parcelle G = new Parcelle("G", 30.0, 900);
 
-		Parcelle P = new Parcelle("P", 0.0, 0.0);
-		Cannalisation C1 = new Cannalisation ("AD", 30.0, 12.13, 0.00, A, D);
-		Cannalisation C2 = new Cannalisation ("AE", 15.0, 12.13, 0.00);
-		Cannalisation C3 = new Cannalisation ("AG", 20.0, 12.13, 0.00);
-		Cannalisation C4 = new Cannalisation ("BD", 20.0, 12.13, 0.00);
-		Cannalisation C5 = new Cannalisation ("BE", 05.0, 12.13, 0.00);
-		Cannalisation C6 = new Cannalisation ("BF", 15.0, 12.13, 0.00);
-		Cannalisation C7 = new Cannalisation ("CF", 10.0, 12.13, 0.00);
-		Cannalisation C8 = new Cannalisation ("CG", 10.0, 12.13, 0.00);
+	
+// Sources et Supersource
 		
-		Cannalisation SA = new Cannalisation ("SA", 45.0, 12.13, 0.00, S, A);
-		Cannalisation SB = new Cannalisation ("SB", 25.0, 12.13, 0.00);
-		Cannalisation SC = new Cannalisation ("SC", 20.0, 12.13, 0.00);
-		Cannalisation DP = new Cannalisation ("DP", 30.0, 12.13, 0.00);
-		Cannalisation EP = new Cannalisation ("EP", 10.0, 12.13, 0.00);
-		Cannalisation FP = new Cannalisation ("FP", 20.0, 12.13, 0.00);
-		Cannalisation GP = new Cannalisation ("GP", 30.0, 12.13, 0.00);
-		VERGE
+		Sommet s = new Sommet("S");
+		Sommet a = new Sommet("A");
+		Sommet b = new Sommet("B");
+		Sommet c = new Sommet("C");
+		
+// Puits et Superpuits 
+		
+		Sommet d = new Sommet("D");
+		Sommet e = new Sommet("E");
+		Sommet f = new Sommet("F");
+		Sommet g = new Sommet("G");	
+		Sommet p = new Sommet("P");
+		
+// Cannalisations Sources / Puits
+		
+		Cannalisation ad = new Cannalisation ("AD", 30.0, 0.00, a, d);
+		Cannalisation ae = new Cannalisation ("AE", 15.0, 0.00, a, e);
+		Cannalisation ag = new Cannalisation ("AG", 20.0, 0.00, a, g);
+		Cannalisation bd = new Cannalisation ("BD", 20.0, 0.00, b, d);
+		Cannalisation be = new Cannalisation ("BE", 05.0, 0.00, b, e);
+		Cannalisation bf = new Cannalisation ("BF", 15.0, 0.00, b, f);
+		Cannalisation cf = new Cannalisation ("CF", 10.0, 0.00, c, f);
+		Cannalisation cg = new Cannalisation ("CG", 10.0, 0.00, c, g);
+		
+// Cannalisations Supersource / Sources
+		
+		Cannalisation sa = new Cannalisation ("SA", 45.0, 0.00, s, a);
+		Cannalisation sb = new Cannalisation ("SB", 25.0, 0.00, s, b);
+		Cannalisation sc = new Cannalisation ("SC", 20.0, 0.00, s, c);
+		
+// Cannalisations Puits / Superpuits
+		
+		Cannalisation dp = new Cannalisation ("DP", 30.0, 0.00, d, p);
+		Cannalisation ep = new Cannalisation ("EP", 10.0, 0.00, e, p);
+		Cannalisation fp = new Cannalisation ("FP", 20.0, 0.00, f, p);
+		Cannalisation gp = new Cannalisation ("GP", 30.0, 0.00, g, p);
+
+
+
 		
 //*************************TEST*******************************************
+		List<Cannalisation> sou = Arrays.asList(sa, sb, sc);
+		List<Cannalisation> can = Arrays.asList(ad, ae, ag, bd, be, bf, cf, cg, dp, ep, fp, gp);
 
-
+		System.out.print(Graph.start(sou).getId());
 		
 	}
 
