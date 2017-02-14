@@ -12,7 +12,7 @@ public class Cannalisation {
 
 	
 	
-	//***********************CREATION CONSTRUCTEUR*****************************//
+//***********************CREATION BUILDER*****************************//
 	public Cannalisation(){
 
 		capacity = 0.0;
@@ -74,12 +74,7 @@ public class Cannalisation {
 		this.sommetSortie = _sommetSortie;
 	}
 	
-	
-	
-	
-	/************************ Tableaux Capacite ************************/
-	
-	
-	ArrayList<Cannalisation> canaSortedByOrder=new ArrayList<Cannalisation>();
-	
 }
+	
+	
+
