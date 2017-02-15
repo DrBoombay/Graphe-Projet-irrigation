@@ -1,30 +1,21 @@
 package projectGraphe;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Graph {
 	
-	public boolean resteDebit(Cannalisation C)
+	public static boolean resteCapa(Cannalisation c)
 	{
 		
-		return C.getCapacity() > 0;
+		return c.getCapacity() > 0;
 	}
 	
-	public double compare (double capacite, double flux)
-	{
-		double fluxR = flux;
-		
-		if (fluxR > capacite)
-			fluxR = capacite;
-		
-		return fluxR;
-	}
 	
 //******************************RECUPERATION DE LA SOURCE AVEC LA PLUS GRANDE CAPACITE RESTANTE**********************************************
 
 	
-	public static Cannalisation start(List<Cannalisation> sources) {
-		Cannalisation sourceMax = new Cannalisation ();
+	public static Cannalisation start(ArrayList<Cannalisation> sources) {
+		Cannalisation sourceMax = new Cannalisation ();																																																													
 		
 		for (Cannalisation source : sources )
 		{
@@ -33,23 +24,35 @@ public class Graph {
 				sourceMax = source;
 			}
 		}
+		sourceMax.getSommetSortie().setFlag(true);
 		return sourceMax;
 	}
 	
 //****************************************PARCOURS DU GRAPH ET RECUPERATION DU FLUX MAXIMUM***************************************************
 	
-	/*public static Cannalisation flotMax(List<Cannalisation> sources) {
-		Cannalisation sourceMax = new Cannalisation ();
+	public static Cannalisation flotMax(ArrayList<Cannalisation> canna, Cannalisation sourceMax) {
+		Cannalisation flux = sourceMax;
+		double capacity = Double.MAX_VALUE;
 		
-		for (Cannalisation source : sources )
+		for (Cannalisation source : canna )
 		{
-			if (source.getCapacity() > sourceMax.getCapacity())
+			if (source.getSommetSortie().getFlag() == false &&
+					flux.getSommetSortie().equals(source.getSommetEntree()) 
+					&& resteCapa(source) == true)
 			{
-				sourceMax = source;
+				flux = source;
+				source.getSommetSortie().setFlag(true);
+				System.out.println(flux.getId());
+				
+				if (capacity > flux.getCapacity())
+				{
+					capacity = flux.getCapacity();
+				}
 			}
 		}
-		return sourceMax;
-	}*/
+		flux.setCapacity(capacity);
+		return flux;
+	}
 	
 
 }

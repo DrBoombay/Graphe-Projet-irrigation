@@ -33,14 +33,14 @@ public class MainClass {
 		Cannalisation bd = new Cannalisation ("BD", 20.0, 0.00, b, d);
 		Cannalisation be = new Cannalisation ("BE", 05.0, 0.00, b, e);
 		Cannalisation bf = new Cannalisation ("BF", 15.0, 0.00, b, f);
-		Cannalisation cf = new Cannalisation ("CF", 10.0, 0.00, c, f);
+		Cannalisation cf = new Cannalisation ("CF", 0.0, 0.00, c, f);
 		Cannalisation cg = new Cannalisation ("CG", 10.0, 0.00, c, g);
 		
 // Cannalisations Supersource / Sources
 		
 		Cannalisation sa = new Cannalisation ("SA", 45.0, 0.00, s, a);
 		Cannalisation sb = new Cannalisation ("SB", 25.0, 0.00, s, b);
-		Cannalisation sc = new Cannalisation ("SC", 20.0, 0.00, s, c);
+		Cannalisation sc = new Cannalisation ("SC", 70.0, 0.00, s, c);
 		
 // Cannalisations Puits / Superpuits
 		
@@ -53,10 +53,29 @@ public class MainClass {
 
 		
 //*************************TEST*******************************************
-		List<Cannalisation> sou = Arrays.asList(sa, sb, sc);
-		List<Cannalisation> can = Arrays.asList(ad, ae, ag, bd, be, bf, cf, cg, dp, ep, fp, gp);
+		ArrayList<Cannalisation> sources = new ArrayList <Cannalisation>();
+		ArrayList<Cannalisation> can = new ArrayList <Cannalisation>();
+		
+		sources.add(sa);
+		sources.add(sb);
+		sources.add(sc);
+		
+		can.add(ad);
+		can.add(ae);
+		can.add(bd);
+		can.add(be);
+		can.add(bf);
+		can.add(cf);
+		can.add(cg);
+		can.add(dp);
+		can.add(ep);
+		can.add(fp);
+		can.add(gp);
 
-		System.out.print(Graph.start(sou).getId());
+		System.out.println(Graph.start(sources).getId());
+		System.out.println(c.getFlag());
+		Graph.flotMax(can, Graph.start(sources));
+		System.out.println(p.getFlag());
 		
 	}
 
