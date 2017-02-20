@@ -35,14 +35,17 @@ public class Graph {
 	
 //****************************************PARCOURS DU GRAPH ET RECUPERATION DU FLUX MAXIMUM***************************************************
 	
-	public static Cannalisation flotMax(ArrayList<Cannalisation> canna, Cannalisation sourceMax) {
+	public static Cannalisation flotMax(ArrayList<Cannalisation> listeCannas, Cannalisation sourceMax) {
 		Cannalisation flux = sourceMax;
+		Cannalisation temp = new Cannalisation();
 		double capacity = Double.MAX_VALUE;
+		ArrayList<Cannalisation> cannaParcourues = new ArrayList<Cannalisation>();
+		cannaParcourues.add(flux);
 		
 		while (flux.getSommetSortie().getName().equals("P"))
 		{
-//*********************************************PARCOURS DU TABLEAU******************************************************************************************************
-			for (Cannalisation source : canna )
+//*********************************************PARCOURS DU TABLEAU***********************************************************************
+			for (Cannalisation source : listeCannas )
 			{
 				if (source.getSommetSortie().getFlag() == false &&
 						flux.getSommetSortie().equals(source.getSommetEntree()) 
@@ -50,17 +53,22 @@ public class Graph {
 				{
 					flux = source;
 					source.getSommetSortie().setFlag(true);
-					System.out.println(flux.getId());
+					cannaParcourues.add(source);
 					
 					if (capacity > flux.getCapacity())
 					{
 						capacity = flux.getCapacity();
 					}
-					
 				}
 			}
 			
+//*********************************************TEST DU PARCOURS DE L'ARRAYLIST**********************************************************			
+			if (!flux.equals(temp) && !flux.equals(sourceMax))
+				temp = flux;
 			
+			else
+				cannaParcourues.get(cannaParcourues.size()-1).setFlag(true);
+				break;
 		}
 		
 		
