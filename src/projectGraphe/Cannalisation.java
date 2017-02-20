@@ -8,6 +8,7 @@ public class Cannalisation {
 	protected double flux;
 	protected Sommet sommetEntree;
 	protected Sommet sommetSortie;
+	protected boolean flagCanna;
 
 
 	
@@ -20,15 +21,17 @@ public class Cannalisation {
 		flux = 0.0;
 		sommetEntree = null;
 		sommetSortie = null;
+		flagCanna = true;
 		
 	}
-	
-	public Cannalisation( String idP ,double capacityP, double fluxP, Sommet sommetEntreeP, Sommet sommetSortieP){
-		id = idP;
-		capacity = capacityP;
-		flux = fluxP;
-		sommetEntree = sommetEntreeP;
-		sommetSortie = sommetSortieP;
+
+	public Cannalisation( String _id ,double _capacity, double _flux, Sommet _sommetEntree, Sommet _sommetSortie, boolean _flagCanna){
+		id = _id;
+		capacity = _capacity;
+		flux = _flux;
+		sommetEntree = _sommetEntree;
+		sommetSortie = _sommetSortie;
+		flagCanna = _flagCanna;
 	}
 
 //************************************G E T T E R S **************************************
@@ -52,6 +55,10 @@ public class Cannalisation {
 		return this.flux;
 	}
 	
+	public boolean getSens(){
+		return this.flagCanna;
+	}
+	
 	/********************* S E T T E R S ****************************/
 	
 	public void setFlux(double _flux){
@@ -72,6 +79,10 @@ public class Cannalisation {
 	
 	public void setSommetSort(Sommet _sommetSortie){
 		this.sommetSortie = _sommetSortie;
+	}
+	
+	public void setSens (boolean _flagCanna){
+		this.flagCanna = _flagCanna;
 	}
 	
 }

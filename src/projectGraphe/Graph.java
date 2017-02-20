@@ -10,6 +10,11 @@ public class Graph {
 		return c.getCapacity() > 0;
 	}
 	
+	public static boolean restCapaBack(Cannalisation b){
+		
+		return b.getFlux() >0;
+	}
+	
 	
 //******************************RECUPERATION DE LA SOURCE AVEC LA PLUS GRANDE CAPACITE RESTANTE**********************************************
 
@@ -34,25 +39,77 @@ public class Graph {
 		Cannalisation flux = sourceMax;
 		double capacity = Double.MAX_VALUE;
 		
-		for (Cannalisation source : canna )
+		while (flux.getSommetSortie().getName().equals("P"))
 		{
-			if (source.getSommetSortie().getFlag() == false &&
-					flux.getSommetSortie().equals(source.getSommetEntree()) 
-					&& resteCapa(source) == true)
+//*********************************************PARCOURS DU TABLEAU******************************************************************************************************
+			for (Cannalisation source : canna )
 			{
-				flux = source;
-				source.getSommetSortie().setFlag(true);
-				System.out.println(flux.getId());
-				
-				if (capacity > flux.getCapacity())
+				if (source.getSommetSortie().getFlag() == false &&
+						flux.getSommetSortie().equals(source.getSommetEntree()) 
+						&& resteCapa(source) == true)
 				{
-					capacity = flux.getCapacity();
+					flux = source;
+					source.getSommetSortie().setFlag(true);
+					System.out.println(flux.getId());
+					
+					if (capacity > flux.getCapacity())
+					{
+						capacity = flux.getCapacity();
+					}
+					
 				}
 			}
+			
+			
 		}
+		
+		
 		flux.setCapacity(capacity);
 		return flux;
 	}
 	
-
+//**
+	
+//**********************************************************************************************************************************************//
+//*********************************************PARCOURS DU GRAPHE A L'ENVERS *******************************************************************//
+//**********************************************************************************************************************************************//
+	
+	/*public static Cannalisation backFlux(ArrayList<Cannalisation> canna, Cannalisation can){
+		
+		Cannalisation backFlux = can;
+		double back= Double.MAX_VALUE;
+		
+		for(Cannalisation flux : canna){
+			if(can.getSommetSortie().getFlag() ==false &&
+					can.getSommetSortie().getFlag()==false &&
+					backFlux.getSommetSortie().equals(flux.getSommetSortie())&&
+					restCapaBack(can)==true){
+				
+				backFlux=flux;
+				can.getSommetEntree().setFlag(true);
+				System.out.println(backFlux.getId());
+				
+				if(back > backFlux.getFlux()){
+					back = backFlux.getFlux();
+					
+				}
+				
+			}
+		}
+		backFlux.setFlux(back);
+		return backFlux; 
+	}*/
+	
+	
+//********************************************MISE A JOUR DES CAPACITES*************************************************************************
+	
+	public static void updateCapa(ArrayList<Cannalisation> cannaStock, Cannalisation update){
+		
+		for (Cannalisation can : cannaStock)
+		{
+			can.setCapacity(can.getCapacity()-update.getCapacity());
+		}
+	}
+	
 }
+
