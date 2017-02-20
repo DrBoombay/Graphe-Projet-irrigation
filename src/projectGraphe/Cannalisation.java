@@ -21,17 +21,16 @@ public class Cannalisation {
 		flux = 0.0;
 		sommetEntree = null;
 		sommetSortie = null;
-		flagCanna = true;
+		flagCanna = false;
 		
 	}
 
-	public Cannalisation( String _id ,double _capacity, double _flux, Sommet _sommetEntree, Sommet _sommetSortie, boolean _flagCanna){
+	public Cannalisation( String _id ,double _capacity, double _flux, Sommet _sommetEntree, Sommet _sommetSortie){
 		id = _id;
 		capacity = _capacity;
 		flux = _flux;
 		sommetEntree = _sommetEntree;
 		sommetSortie = _sommetSortie;
-		flagCanna = _flagCanna;
 	}
 
 //************************************G E T T E R S **************************************
@@ -81,7 +80,7 @@ public class Cannalisation {
 		this.sommetSortie = _sommetSortie;
 	}
 	
-	public void setSens (boolean _flagCanna){
+	public void setFlag (boolean _flagCanna){
 		this.flagCanna = _flagCanna;
 	}
 	
