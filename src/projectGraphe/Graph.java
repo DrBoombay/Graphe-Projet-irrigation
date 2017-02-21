@@ -82,31 +82,7 @@ public class Graph {
 //*********************************************PARCOURS DU GRAPHE A L'ENVERS *******************************************************************//
 //**********************************************************************************************************************************************//
 	
-	/*public static Cannalisation backFlux(ArrayList<Cannalisation> canna, Cannalisation can){
-		
-		Cannalisation backFlux = can;
-		double back= Double.MAX_VALUE;
-		
-		for(Cannalisation flux : canna){
-			if(can.getSommetSortie().getFlag() ==false &&
-					can.getSommetSortie().getFlag()==false &&
-					backFlux.getSommetSortie().equals(flux.getSommetSortie())&&
-					restCapaBack(can)==true){
-				
-				backFlux=flux;
-				can.getSommetEntree().setFlag(true);
-				System.out.println(backFlux.getId());
-				
-				if(back > backFlux.getFlux()){
-					back = backFlux.getFlux();Mal3kit
-					
-				}
-				
-			}
-		}
-		backFlux.setFlux(back);
-		return backFlux; 
-	}*/
+
 	
 	
 //********************************************MISE A JOUR DES CAPACITES*************************************************************************
