@@ -98,7 +98,7 @@ public class Graph {
 				System.out.println(backFlux.getId());
 				
 				if(back > backFlux.getFlux()){
-					back = backFlux.getFlux();
+					back = backFlux.getFlux();Mal3kit
 					
 				}
 				
