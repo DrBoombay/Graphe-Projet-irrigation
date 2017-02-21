@@ -1,9 +1,7 @@
 package projectGraphe;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 public class MainClass {
 
@@ -33,8 +31,17 @@ public class MainClass {
 		Cannalisation bd = new Cannalisation ("BD", 20.0, 0.00, b, d);
 		Cannalisation be = new Cannalisation ("BE", 05.0, 0.00, b, e);
 		Cannalisation bf = new Cannalisation ("BF", 15.0, 0.00, b, f);
-		Cannalisation cf = new Cannalisation ("CF", 0.0, 0.00, c, f);
+		Cannalisation cf = new Cannalisation ("CF", 10.0, 0.00, c, f);
 		Cannalisation cg = new Cannalisation ("CG", 10.0, 0.00, c, g);
+		
+		Cannalisation da = new Cannalisation ("AD", 0.00, 30.00, d, a);
+		Cannalisation ea = new Cannalisation ("AE", 0.00, 15.00, a, e);
+		Cannalisation ga = new Cannalisation ("AG", 0.00, 20.00, a, g);
+		Cannalisation db = new Cannalisation ("BD", 0.00, 20.00, b, d);
+		Cannalisation eb = new Cannalisation ("BE", 0.00, 05.0, b, e);
+		Cannalisation fb = new Cannalisation ("BF", 0.00, 15.00, b, f);
+		Cannalisation fc = new Cannalisation ("CF", 0.00, 10.00, c, f);
+		Cannalisation gc = new Cannalisation ("CG", 0.00, 10.00, c, g);
 		
 // Cannalisations Supersource / Sources
 		
@@ -49,29 +56,48 @@ public class MainClass {
 		Cannalisation fp = new Cannalisation ("FP", 20.0, 0.00, f, p);
 		Cannalisation gp = new Cannalisation ("GP", 30.0, 0.00, g, p);
 
-
-
 		
-//*************************TEST*******************************************
+		
+//*************************LISTES CANNALISATIONS*********************************************************
 		ArrayList<Cannalisation> sources = new ArrayList <Cannalisation>();
 		ArrayList<Cannalisation> can = new ArrayList <Cannalisation>();
+//		ArrayList<Cannalisation> 
 		
+		
+//***************************AJOUT DES SOURCES**********************************************************
 		sources.add(sa);
 		sources.add(sb);
 		sources.add(sc);
-		
+
+//******************************AJOUT DES CANA SENS POSITF**********************************************
 		can.add(ad);
 		can.add(ae);
+		can.add(ag);
 		can.add(bd);
 		can.add(be);
 		can.add(bf);
 		can.add(cf);
 		can.add(cg);
+		
+//******************************AJOUT DES CANA SENS NEGATIF**********************************************
+		can.add(da);
+		can.add(ea);
+		can.add(ga);
+		can.add(db);
+		can.add(eb);
+		can.add(fb);
+		can.add(fc);
+		can.add(gc);
+
+//*******************************AJOUT DES PUITS********************************************************
 		can.add(dp);
 		can.add(ep);
 		can.add(fp);
 		can.add(gp);
 
+		
+//****************************TEST**************************************************************************
+		
 		System.out.println(Graph.start(sources).getId());
 		System.out.println(c.getFlag());
 		Graph.flotMax(can, Graph.start(sources));
