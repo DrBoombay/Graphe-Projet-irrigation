@@ -76,13 +76,18 @@ public class Graph {
 		return flux;
 	}
 	
+
 //**
 	
+
 //**********************************************************************************************************************************************//
 //*********************************************PARCOURS DU GRAPHE A L'ENVERS *******************************************************************//
 //**********************************************************************************************************************************************//
 	
 	/*public static Cannalisation backFlux(ArrayList<Cannalisation> canna, Cannalisation can){
+
+	public static Cannalisation backFlux(ArrayList<Cannalisation> canna, Cannalisation can){
+
 		
 		Cannalisation backFlux = can;
 		double back= Double.MAX_VALUE;
@@ -102,6 +107,7 @@ public class Graph {
 					
 				}
 				
+
 			}
 		}
 		backFlux.setFlux(back);
@@ -118,6 +124,4 @@ public class Graph {
 			can.setCapacity(can.getCapacity()-update.getCapacity());
 		}
 	}
-	
 }
-
