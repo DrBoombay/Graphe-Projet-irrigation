@@ -102,7 +102,8 @@ public class MainClass {
 		System.out.println(c.getFlag());
 		Graph.flotMax(can, Graph.start(sources));
 		System.out.println(p.getFlag());
-		
+		System.out.println(sc.getCapacity());
+		System.out.println(sb);
 	}
 
 }
