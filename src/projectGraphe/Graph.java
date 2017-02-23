@@ -4,18 +4,6 @@ import java.util.ArrayList;
 
 public class Graph {
 	
-	public static boolean resteCapa(Cannalisation c)
-	{
-		
-		return c.getCapacity() > 0;
-	}
-	
-	public static boolean restCapaBack(Cannalisation b){
-		
-		return b.getFlux() >0;
-	}
-	
-	
 //******************************RECUPERATION DE LA SOURCE AVEC LA PLUS GRANDE CAPACITE RESTANTE**********************************************
 
 	
@@ -24,7 +12,7 @@ public class Graph {
 		
 		for (Cannalisation source : sources )
 		{
-			if (source.getCapacity() > sourceMax.getCapacity())
+			if (source.getCapacity() > sourceMax.getCapacity() && !source.flagCanna)
 			{
 				sourceMax = source;
 			}
@@ -35,45 +23,66 @@ public class Graph {
 	
 //****************************************PARCOURS DU GRAPH ET RECUPERATION DU FLUX MAXIMUM***************************************************
 	
-	public static Cannalisation flotMax(ArrayList<Cannalisation> listeCannas, Cannalisation sourceMax) {
+	public static void flotMax(ArrayList<Cannalisation> listeCannas, Cannalisation sourceMax) {
 		Cannalisation flux = sourceMax;
 		Cannalisation temp = new Cannalisation();
 		double capacity = Double.MAX_VALUE;
 		ArrayList<Cannalisation> cannaParcourues = new ArrayList<Cannalisation>();
 		cannaParcourues.add(flux);
 		
-		while (flux.getSommetSortie().getName().equals("P"))
-		{
-//*********************************************PARCOURS DU TABLEAU***********************************************************************
-			for (Cannalisation source : listeCannas )
+		while (flux.getCapacity()>0) 
 			{
-				if (source.getSommetSortie().getFlag() == false &&
-						flux.getSommetSortie().equals(source.getSommetEntree()) 
-						&& resteCapa(source) == true)
+			while (!flux.getSommetSortie().getName().equals("P"))
+			{
+				if (flux.getFlag())
+					break;
+	//*********************************************PARCOURS DU TABLEAU***********************************************************************
+				for (Cannalisation source : listeCannas )
 				{
-					flux = source;
-					source.getSommetSortie().setFlag(true);
-					cannaParcourues.add(source);
-					
-					if (capacity > flux.getCapacity())
+					if (source.getSommetSortie().getFlag() == false &&
+							flux.getSommetSortie().equals(source.getSommetEntree()) 
+							&& source.getCapacity()>0)
 					{
-						capacity = flux.getCapacity();
+						flux = source;
+						source.getSommetSortie().setFlag(true);
+						cannaParcourues.add(source);
+						System.out.println(source.getId());
+						
+						if (capacity > flux.getCapacity())
+						{
+							capacity = flux.getCapacity();
+						}
 					}
 				}
+				
+				if (flux.equals(sourceMax))
+				{
+					sourceMax.setFlag(true);
+					break;
+				}
+	//*********************************************TEST DU PARCOURS DE L'ARRAYLIST**********************************************************			
+				else if (!flux.equals(temp))
+					temp = flux;
+				
+				else if(flux.getSommetSortie().getName()!="P") {
+					flux = sourceMax;
+					cannaParcourues.get(cannaParcourues.size()-1).setFlag(true);
+					cannaParcourues.clear();
+					}
 			}
 			
-//*********************************************TEST DU PARCOURS DE L'ARRAYLIST**********************************************************			
-			if (!flux.equals(temp) && !flux.equals(sourceMax))
-				temp = flux;
 			
-			else
-				cannaParcourues.get(cannaParcourues.size()-1).setFlag(true);
-				break;
+			flux.setCapacity(capacity);
+			updateCapa(cannaParcourues,flux);
+			cannaParcourues.clear();
+			//****************METHODE POUR RESET LES FLAG DES CANNA / SOMMETS***************
+			for (Cannalisation source : listeCannas )
+			{
+				source.setFlag(false);
+				source.getSommetSortie().setFlag(false);
+			}
+			
 		}
-		
-		
-		flux.setCapacity(capacity);
-		return flux;
 	}
 	
 //**

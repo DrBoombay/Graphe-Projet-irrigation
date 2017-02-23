@@ -54,7 +54,7 @@ public class Cannalisation {
 		return this.flux;
 	}
 	
-	public boolean getSens(){
+	public boolean getFlag(){
 		return this.flagCanna;
 	}
 	
@@ -82,6 +82,12 @@ public class Cannalisation {
 	
 	public void setFlag (boolean _flagCanna){
 		this.flagCanna = _flagCanna;
+	}
+	
+	public String toString()
+	{
+		return this.id+" est une cannalisation de capacité "+this.capacity+". Son flux est de "+this.flux+". Elle a pour sommet d'entrée "+this.sommetEntree.getName()+" et pour sommet de sortie "
+				+this.sommetSortie.getName()+".";
 	}
 	
 }
