@@ -2,7 +2,7 @@ package projectGraphe;
 
 import java.util.ArrayList;
 
-public class Cannalisation {
+public class Canalisation {
 	protected double capacity;
 	protected String id;
 	protected double flux;
@@ -14,7 +14,7 @@ public class Cannalisation {
 	
 	
 //***********************CREATION BUILDER*****************************//
-	public Cannalisation(){
+	public Canalisation(){
 
 		capacity = 0.0;
 		id = "inconnu";
@@ -25,7 +25,7 @@ public class Cannalisation {
 		
 	}
 
-	public Cannalisation( String _id ,double _capacity, double _flux, Sommet _sommetEntree, Sommet _sommetSortie){
+	public Canalisation( String _id ,double _capacity, double _flux, Sommet _sommetEntree, Sommet _sommetSortie){
 		id = _id;
 		capacity = _capacity;
 		flux = _flux;
@@ -86,7 +86,7 @@ public class Cannalisation {
 	
 	public String toString()
 	{
-		return this.id+" est une cannalisation de capacitÃ© "+this.capacity+". Son flux est de "+this.flux+". Elle a pour sommet d'entrÃ©e "+this.sommetEntree.getName()+" et pour sommet de sortie "
+		return this.id+" est une cannalisation de capacité "+this.capacity+". Son flux est de "+this.flux+". Elle a pour sommet d'entrée "+this.sommetEntree.getName()+" et pour sommet de sortie "
 				+this.sommetSortie.getName()+".";
 	}
 	

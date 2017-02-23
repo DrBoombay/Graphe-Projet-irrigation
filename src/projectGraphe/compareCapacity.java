@@ -3,17 +3,17 @@ package projectGraphe;
 public class compareCapacity {
 	
 	
-	Cannalisation[] tabCannalisation;
+	Canalisation[] tabCannalisation;
 
-	public compareCapacity(Cannalisation[] tabCannalisation) {
+	public compareCapacity(Canalisation[] tabCannalisation) {
 		this.tabCannalisation = tabCannalisation;
 	}
 
-	public Cannalisation[] getTabCannalisation() {
+	public Canalisation[] getTabCannalisation() {
 		return tabCannalisation;
 	}
 
-	public void setTabCannalisation(Cannalisation[] tabCannalisation) {
+	public void setTabCannalisation(Canalisation[] tabCannalisation) {
 		this.tabCannalisation = tabCannalisation;
 	}
 	
