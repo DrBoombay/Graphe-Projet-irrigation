@@ -25,43 +25,44 @@ public class MainClass {
 		
 // Cannalisations Sources / Puits
 		
-		Cannalisation ad = new Cannalisation ("AD", 30.0, 0.00, a, d);
-		Cannalisation ae = new Cannalisation ("AE", 15.0, 0.00, a, e);
-		Cannalisation ag = new Cannalisation ("AG", 20.0, 0.00, a, g);
-		Cannalisation bd = new Cannalisation ("BD", 20.0, 0.00, b, d);
-		Cannalisation be = new Cannalisation ("BE", 05.0, 0.00, b, e);
-		Cannalisation bf = new Cannalisation ("BF", 15.0, 0.00, b, f);
-		Cannalisation cf = new Cannalisation ("CF", 10.0, 0.00, c, f);
-		Cannalisation cg = new Cannalisation ("CG", 10.0, 0.00, c, g);
+		Canalisation ad = new Canalisation ("AD", 30.0, 0.00, a, d);
+		Canalisation ae = new Canalisation ("AE", 15.0, 0.00, a, e);
+		Canalisation ag = new Canalisation ("AG", 20.0, 0.00, a, g);
+		Canalisation bd = new Canalisation ("BD", 20.0, 0.00, b, d);
+		Canalisation be = new Canalisation ("BE", 05.0, 0.00, b, e);
+		Canalisation bf = new Canalisation ("BF", 15.0, 0.00, b, f);
+		Canalisation cf = new Canalisation ("CF", 10.0, 0.00, c, f);
+		Canalisation cg = new Canalisation ("CG", 10.0, 0.00, c, g);
 		
-		Cannalisation da = new Cannalisation ("AD", 0.00, 30.00, d, a);
-		Cannalisation ea = new Cannalisation ("AE", 0.00, 15.00, a, e);
-		Cannalisation ga = new Cannalisation ("AG", 0.00, 20.00, a, g);
-		Cannalisation db = new Cannalisation ("BD", 0.00, 20.00, b, d);
-		Cannalisation eb = new Cannalisation ("BE", 0.00, 05.0, b, e);
-		Cannalisation fb = new Cannalisation ("BF", 0.00, 15.00, b, f);
-		Cannalisation fc = new Cannalisation ("CF", 0.00, 10.00, c, f);
-		Cannalisation gc = new Cannalisation ("CG", 0.00, 10.00, c, g);
+		Canalisation da = new Canalisation ("AD", 0.00, 30.00, d, a);
+		Canalisation ea = new Canalisation ("AE", 0.00, 15.00, a, e);
+		Canalisation ga = new Canalisation ("AG", 0.00, 20.00, a, g);
+		Canalisation db = new Canalisation ("BD", 0.00, 20.00, b, d);
+		Canalisation eb = new Canalisation ("BE", 0.00, 05.0, b, e);
+		Canalisation fb = new Canalisation ("BF", 0.00, 15.00, b, f);
+		Canalisation fc = new Canalisation ("CF", 0.00, 10.00, c, f);
+		Canalisation gc = new Canalisation ("CG", 0.00, 10.00, c, g);
 		
 // Cannalisations Supersource / Sources
 		
-		Cannalisation sa = new Cannalisation ("SA", 45.0, 0.00, s, a);
-		Cannalisation sb = new Cannalisation ("SB", 25.0, 0.00, s, b);
-		Cannalisation sc = new Cannalisation ("SC", 70.0, 0.00, s, c);
+		Canalisation sa = new Canalisation ("SA", 45.0, 0.00, s, a);
+		Canalisation sb = new Canalisation ("SB", 25.0, 0.00, s, b);
+		Canalisation sc = new Canalisation ("SC", 20.0, 0.00, s, c);
 		
 // Cannalisations Puits / Superpuits
 		
-		Cannalisation dp = new Cannalisation ("DP", 30.0, 0.00, d, p);
-		Cannalisation ep = new Cannalisation ("EP", 10.0, 0.00, e, p);
-		Cannalisation fp = new Cannalisation ("FP", 20.0, 0.00, f, p);
-		Cannalisation gp = new Cannalisation ("GP", 30.0, 0.00, g, p);
+
+		Canalisation dp = new Canalisation ("DP", 30.0, 0.00, d, p);
+		Canalisation ep = new Canalisation ("EP", 10.0, 0.00, e, p);
+		Canalisation fp = new Canalisation ("FP", 20.0, 0.00, f, p);
+		Canalisation gp = new Canalisation ("GP", 30.0, 0.00, g, p);
 
 		
 		
 //*************************LISTES CANNALISATIONS*********************************************************
-		ArrayList<Cannalisation> sources = new ArrayList <Cannalisation>();
-		ArrayList<Cannalisation> can = new ArrayList <Cannalisation>();
-//		ArrayList<Cannalisation> 
+		ArrayList<Canalisation> sources = new ArrayList <Canalisation>();
+		ArrayList<Canalisation> can = new ArrayList <Canalisation>();
+//		ArrayList<Canalisation> 
 		
 		
 //***************************AJOUT DES SOURCES**********************************************************
@@ -96,14 +97,14 @@ public class MainClass {
 		can.add(gp);
 
 		
-//****************************TEST**************************************************************************
-		
-		System.out.println(Graph.start(sources).getId());
-		System.out.println(c.getFlag());
-		Graph.flotMax(can, Graph.start(sources));
-		System.out.println(p.getFlag());
-		System.out.println(sc.getCapacity());
-		System.out.println(sb);
+//****************************TEST**************************************************************************		
+		Graph.flotMax(can, sources);
+		/*for (Canalisation cana : sources)
+			System.out.println(cana);
+		for (Canalisation cana : can)
+			System.out.println(cana);
+		/*System.out.println(sc.getCapacity());
+		System.out.println(sb);*/
 	}
 
 }
