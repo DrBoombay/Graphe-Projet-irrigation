@@ -29,22 +29,54 @@ public class Graph {
 		Canalisation temp = new Canalisation();
 		//double capacity = Double.MAX_VALUE;
 		ArrayList<Canalisation> canaParcourues = new ArrayList<Canalisation>();
+		ArrayList<Canalisation> canaInv = new ArrayList<Canalisation>();
 		//canaParcourues.add(flux);
 		
-		while (flux.getCapacity()>0) 
-			{
+		//while (flux.getCapacity()>0) 
+		//	{
 			
 			flux = start(sources);
 			//System.out.println(flux);
 			canaParcourues.add(flux);
-			grapheIntermediaire(listeCanalisations, flux, start(sources), canaParcourues);
-			System.out.println(flux);
-			updateCapa(canaParcourues,flux);
+			temp = grapheIntermediaire(listeCanalisations, flux, start(sources), canaParcourues);
+			//System.out.println(temp);
+			//System.out.println();
+			
+			//for (Canalisation test : canaParcourues)
+				//System.out.println(test);
+			updateCapa(canaParcourues,temp);
+			//System.out.println();
+			
+			//for (Canalisation test : canaParcourues)
+				//System.out.println(test);
+			//System.out.println();
+			
+			canaInv = getCanaInv(listeCanalisations, canaParcourues);
+			//for (Canalisation test : canaInv)
+				//System.out.println(test);
+			//System.out.println();
+			
+			//System.out.println(temp);
+			
+			updateFlux(canaInv, temp);
+			//for (Canalisation test : canaInv)
+				//System.out.println(test);
+			//System.out.println();
+			
+			/*for (Canalisation test : sources)
+				System.out.println(test);
 			canaParcourues.clear();
+			System.out.println();
+			
+			for (Canalisation test : canaParcourues)
+				System.out.println(test);
+			System.out.println();
+			
 			//System.out.println(flux);
 			updateFlag(listeCanalisations);
-			//System.out.println(flux);
-		}
+			//System.out.println(flux);*/
+			
+		//}
 	}
 	
 //**
@@ -77,19 +109,19 @@ public class Graph {
 	}
 
 //*********************************************REALISATION D'UN TOUR********************************************************************
-	public static void grapheIntermediaire(ArrayList<Canalisation> listeCanalisations, Canalisation flux, Canalisation sourceMax, ArrayList<Canalisation> canaParcourues )
+	public static Canalisation grapheIntermediaire(ArrayList<Canalisation> listeCanalisations, Canalisation flux, Canalisation sourceMax, ArrayList<Canalisation> canaParcourues )
 	{
 		int compt=0;
 		Canalisation temp = new Canalisation();
 		while (!flux.getSommetSortie().getName().equals("P"))
 		{
 			compt ++;
-			System.out.println(compt);
+			//System.out.println(compt);
 			if (flux.getFlag())
 				break;
 			
 			flux = parcoursArray(listeCanalisations, flux, canaParcourues);
-			System.out.println(flux);
+			//System.out.println(flux);
 			if (flux.equals(sourceMax))
 			{
 				sourceMax.setFlag(true);
@@ -106,21 +138,33 @@ public class Graph {
 				canaParcourues.clear();
 			}
 		}
-		System.out.println(flux);
-		System.out.println(sourceMax);
+		//System.out.println(flux);
+		//System.out.println(sourceMax);
+		return flux;
 	}
 	
 //********************************************MISE A JOUR DES CAPACITES*************************************************************************
 	
-	public static void updateCapa(ArrayList<Canalisation> cannaStock, Canalisation update)
+	public static void updateCapa(ArrayList<Canalisation> canaStock, Canalisation update)
 	{
-		
-		for (Canalisation can : cannaStock)
+		double temp = update.getCapacity();
+		for (Canalisation can : canaStock)
 		{
-			can.setCapacity(can.getCapacity()-update.getCapacity());
+			can.setCapacity(can.getCapacity()-temp);
+			can.setFlux(can.getFlux()+temp);
 		}
 	}
 	
+//*******************************************MISE A JOUR DES FLUX******************************************************************************
+	public static void updateFlux (ArrayList<Canalisation> canaInv, Canalisation update)
+	{
+		double temp = update.getFlux();
+		for (Canalisation can : canaInv)
+		{
+			can.setCapacity(can.getCapacity()+temp);
+			can.setFlux(can.getCapacity()-temp);
+		}
+	}
 //************************************************RESET DES FLAG*************************************************************************
 	
 	public static void updateFlag(ArrayList<Canalisation> listeCanalisations)
@@ -132,4 +176,18 @@ public class Graph {
 		}
 	}
 	
+//********************************************RECUPERATION DES CANALISATIONS CONTRAIRES*******************************************************
+	public static ArrayList<Canalisation> getCanaInv(ArrayList<Canalisation> listeCana, ArrayList<Canalisation> canaParcourues)
+	{
+		ArrayList<Canalisation> canaInv = new ArrayList<Canalisation>();
+		
+		for (Canalisation cana : canaParcourues)
+		{
+			for (Canalisation cana1 : listeCana)
+			if (cana.getId().equals(cana1.getId()) && !cana.getSommetEntree().equals(cana1.getSommetEntree())) 
+				canaInv.add(cana1);
+		}
+		
+		return canaInv;
+	}
 }

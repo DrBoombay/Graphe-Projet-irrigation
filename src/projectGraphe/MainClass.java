@@ -38,7 +38,7 @@ public class MainClass {
 		Canalisation ea = new Canalisation ("AE", 0.00, 15.00, a, e);
 		Canalisation ga = new Canalisation ("AG", 0.00, 20.00, a, g);
 		Canalisation db = new Canalisation ("BD", 0.00, 20.00, b, d);
-		Canalisation eb = new Canalisation ("BE", 0.00, 05.0, b, e);
+		Canalisation eb = new Canalisation ("BE", 0.00, 05.00, b, e);
 		Canalisation fb = new Canalisation ("BF", 0.00, 15.00, b, f);
 		Canalisation fc = new Canalisation ("CF", 0.00, 10.00, c, f);
 		Canalisation gc = new Canalisation ("CG", 0.00, 10.00, c, g);
@@ -96,11 +96,15 @@ public class MainClass {
 
 		
 //****************************TEST**************************************************************************		
+		//for (Canalisation cana : can)
+			//System.out.println(cana);
 		Graph.flotMax(can, sources);
-		/*for (Canalisation cana : sources)
+		for (Canalisation cana : sources)
 			System.out.println(cana);
+		System.out.println();
 		for (Canalisation cana : can)
 			System.out.println(cana);
+		System.out.println();
 		/*System.out.println(sc.getCapacity());
 		System.out.println(sb);*/
 	}
