@@ -51,10 +51,12 @@ public class MainClass {
 		
 // Cannalisations Puits / Superpuits
 		
+
 		Canalisation dp = new Canalisation ("DP", 30.0, 0.00, d, p);
 		Canalisation ep = new Canalisation ("EP", 10.0, 0.00, e, p);
 		Canalisation fp = new Canalisation ("FP", 20.0, 0.00, f, p);
 		Canalisation gp = new Canalisation ("GP", 30.0, 0.00, g, p);
+
 		
 		
 //*************************LISTES CANNALISATIONS*********************************************************

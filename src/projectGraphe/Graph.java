@@ -47,11 +47,14 @@ public class Graph {
 		}
 	}
 	
+
 //**
 	
+
 //**********************************************************************************************************************************************//
 //*********************************************PARCOURS DE LA LISTE DES CANALISATIONS *******************************************************************//
 //**********************************************************************************************************************************************//
+
 	public static Canalisation parcoursArray (ArrayList<Canalisation> listeCanalisations, Canalisation flux, ArrayList<Canalisation> canaParcourues )
 	{
 		//double capacity = Double.MAX_VALUE;
@@ -66,6 +69,7 @@ public class Graph {
 				canaParcourues.add(source);
 				//System.out.println(flux);
 				//System.out.println(source.getId());
+
 				
 				/*if (capacity > flux.getCapacity())
 				{
