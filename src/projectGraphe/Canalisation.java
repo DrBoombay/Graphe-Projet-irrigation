@@ -86,8 +86,8 @@ public class Canalisation {
 	
 	public String toString()
 	{
-		return this.id+" est une cannalisation de capacité "+this.capacity+". Son flux est de "+this.flux+". Elle a pour sommet d'entrée "+this.sommetEntree.getName()+" et pour sommet de sortie "
-				+this.sommetSortie.getName()+".";
+		return this.id+" de capacite : "+this.capacity+". Flux : "+this.flux+". Sommet d'entree : "+this.sommetEntree.getName()+". Sommet sortie : "
+				+this.sommetSortie.getName()+". FLAG :"+this.flagCanna;
 	}
 	
 }
