@@ -35,13 +35,13 @@ public class MainClass {
 		Canalisation cg = new Canalisation ("CG", 10.0, 0.00, c, g);
 		
 		Canalisation da = new Canalisation ("AD", 0.00, 30.00, d, a);
-		Canalisation ea = new Canalisation ("AE", 0.00, 15.00, a, e);
-		Canalisation ga = new Canalisation ("AG", 0.00, 20.00, a, g);
-		Canalisation db = new Canalisation ("BD", 0.00, 20.00, b, d);
-		Canalisation eb = new Canalisation ("BE", 0.00, 05.00, b, e);
-		Canalisation fb = new Canalisation ("BF", 0.00, 15.00, b, f);
-		Canalisation fc = new Canalisation ("CF", 0.00, 10.00, c, f);
-		Canalisation gc = new Canalisation ("CG", 0.00, 10.00, c, g);
+		Canalisation ea = new Canalisation ("AE", 0.00, 15.00, e, a);
+		Canalisation ga = new Canalisation ("AG", 0.00, 20.00, g, a);
+		Canalisation db = new Canalisation ("BD", 0.00, 20.00, d, b);
+		Canalisation eb = new Canalisation ("BE", 0.00, 05.00, e, b);
+		Canalisation fb = new Canalisation ("BF", 0.00, 15.00, f, b);
+		Canalisation fc = new Canalisation ("CF", 0.00, 10.00, f, c);
+		Canalisation gc = new Canalisation ("CG", 0.00, 10.00, g, c);
 		
 // Cannalisations Supersource / Sources
 		
@@ -96,17 +96,9 @@ public class MainClass {
 
 		
 //****************************TEST**************************************************************************		
-		//for (Canalisation cana : can)
-			//System.out.println(cana);
 		Graph.flotMax(can, sources);
 		for (Canalisation cana : sources)
 			System.out.println(cana);
-		System.out.println();
-		for (Canalisation cana : can)
-			System.out.println(cana);
-		System.out.println();
-		/*System.out.println(sc.getCapacity());
-		System.out.println(sb);*/
 	}
 
 }

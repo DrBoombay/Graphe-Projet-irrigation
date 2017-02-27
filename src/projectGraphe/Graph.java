@@ -4,165 +4,144 @@ import java.util.ArrayList;
 
 public class Graph {
 	
+//****************************************PARCOURS DU GRAPH ET RECUPERATION DU FLUX MAXIMUM***************************************************
+	
+		public static void flotMax(ArrayList<Canalisation> listeCanalisations, ArrayList<Canalisation> sources) {
+			Canalisation flux = new Canalisation();
+			flux.setCapacity(Double.MAX_VALUE);
+			double temp;
+			ArrayList<Canalisation> canaParcourues = new ArrayList<Canalisation>();
+			ArrayList<Canalisation> canaInv = new ArrayList<Canalisation>();
+			
+			while (flux.getCapacity()>0 && flux.getFlag()==false) 
+			{
+				
+				flux = start(sources);
+				canaParcourues.add(flux);
+				temp = grapheIntermediaire(listeCanalisations, flux, start(sources), canaParcourues);
+				
+				for (Canalisation cana : canaParcourues)
+				System.out.println(cana);
+				System.out.println();
+				updateCapa(canaParcourues,temp);
+				
+				canaInv = getCanaInv(listeCanalisations, canaParcourues);
+				
+				updateFlux(canaInv, temp);
+				
+				for (Canalisation test : sources)
+				canaParcourues.clear();				
+
+				updateFlag(listeCanalisations);
+				
+				//for (Canalisation cana : listeCanalisations)
+					//System.out.println(cana);
+				
+			}
+		}
+	
 //******************************RECUPERATION DE LA SOURCE AVEC LA PLUS GRANDE CAPACITE RESTANTE**********************************************
 
-	
 	public static Canalisation start(ArrayList<Canalisation> sources) {
 		Canalisation sourceMax = new Canalisation ();																																																													
 		
 		for (Canalisation source : sources )
 		{
-			if (source.getCapacity() > sourceMax.getCapacity() && !source.getFlag())
+			if (source.getCapacity() > sourceMax.getCapacity() && source.getFlag()==false)
 			{
 				sourceMax = source;
 			}
 		}
-		//sourceMax.getSommetSortie().setFlag(true);
 		return sourceMax;
 	}
 	
-//****************************************PARCOURS DU GRAPH ET RECUPERATION DU FLUX MAXIMUM***************************************************
-	
-	public static void flotMax(ArrayList<Canalisation> listeCanalisations, ArrayList<Canalisation> sources) {
-		Canalisation flux = new Canalisation();
-		flux.setCapacity(Double.MAX_VALUE);
-		Canalisation temp = new Canalisation();
-		//double capacity = Double.MAX_VALUE;
-		ArrayList<Canalisation> canaParcourues = new ArrayList<Canalisation>();
-		ArrayList<Canalisation> canaInv = new ArrayList<Canalisation>();
-		//canaParcourues.add(flux);
-		
-		//while (flux.getCapacity()>0) 
-		//	{
-			
-			flux = start(sources);
-			//System.out.println(flux);
-			canaParcourues.add(flux);
-			temp = grapheIntermediaire(listeCanalisations, flux, start(sources), canaParcourues);
-			//System.out.println(temp);
-			//System.out.println();
-			
-			//for (Canalisation test : canaParcourues)
-				//System.out.println(test);
-			updateCapa(canaParcourues,temp);
-			//System.out.println();
-			
-			//for (Canalisation test : canaParcourues)
-				//System.out.println(test);
-			//System.out.println();
-			
-			canaInv = getCanaInv(listeCanalisations, canaParcourues);
-			//for (Canalisation test : canaInv)
-				//System.out.println(test);
-			//System.out.println();
-			
-			//System.out.println(temp);
-			
-			updateFlux(canaInv, temp);
-			//for (Canalisation test : canaInv)
-				//System.out.println(test);
-			//System.out.println();
-			
-			/*for (Canalisation test : sources)
-				System.out.println(test);
-			canaParcourues.clear();
-			System.out.println();
-			
-			for (Canalisation test : canaParcourues)
-				System.out.println(test);
-			System.out.println();
-			
-			//System.out.println(flux);
-			updateFlag(listeCanalisations);
-			//System.out.println(flux);*/
-			
-		//}
-	}
-	
-//**
-	
-//**********************************************************************************************************************************************//
-//*********************************************PARCOURS DE LA LISTE DES CANALISATIONS *******************************************************************//
-//**********************************************************************************************************************************************//
-	public static Canalisation parcoursArray (ArrayList<Canalisation> listeCanalisations, Canalisation flux, ArrayList<Canalisation> canaParcourues )
-	{
-		//double capacity = Double.MAX_VALUE;
-		for (Canalisation source : listeCanalisations )
-		{
-			if (source.getSommetSortie().getFlag() == false &&
-					flux.getSommetSortie().equals(source.getSommetEntree()) 
-					&& source.getCapacity()>0)
-			{
-				flux = source;
-				source.getSommetSortie().setFlag(true);
-				canaParcourues.add(source);
-				//System.out.println(flux);
-				//System.out.println(source.getId());
-				
-				/*if (capacity > flux.getCapacity())
-				{
-					capacity = flux.getCapacity();
-				}*/
-			}
-		}
-		return flux;
-	}
 
 //*********************************************REALISATION D'UN TOUR********************************************************************
-	public static Canalisation grapheIntermediaire(ArrayList<Canalisation> listeCanalisations, Canalisation flux, Canalisation sourceMax, ArrayList<Canalisation> canaParcourues )
-	{
-		int compt=0;
-		Canalisation temp = new Canalisation();
-		while (!flux.getSommetSortie().getName().equals("P"))
+		public static double grapheIntermediaire(ArrayList<Canalisation> listeCanalisations, Canalisation flux, Canalisation sourceMax, ArrayList<Canalisation> canaParcourues )
 		{
-			compt ++;
-			//System.out.println(compt);
-			if (flux.getFlag())
-				break;
-			
-			flux = parcoursArray(listeCanalisations, flux, canaParcourues);
-			//System.out.println(flux);
-			if (flux.equals(sourceMax))
+			double capacity = Double.MAX_VALUE;
+			Canalisation temp = new Canalisation(), canaInter = flux;
+			while (canaInter.getSommetSortie().getName()!=("P"))
 			{
-				sourceMax.setFlag(true);
-				break;
+				if (canaInter.getFlag()==true){
+					capacity = 0.0;
+					break;
+				}
+				
+				canaInter = parcoursArray(listeCanalisations, flux, canaParcourues);
+				
+				if (canaInter.equals(sourceMax))
+				{
+					sourceMax.setFlag(true);
+					capacity = 0.0;
+					break;
+				}
+				
+				else if (!canaInter.equals(temp))
+					temp = canaInter;
+				
+				
+				
+				else if(canaInter.getSommetSortie().getName()!="P") 
+				{
+					canaInter = sourceMax;
+					canaParcourues.get(canaParcourues.size()-1).setFlag(true);
+					canaParcourues.clear();
+				}
+				
+				if (canaInter.getSommetSortie().getName()=="P")
+				{
+					for (Canalisation cana : canaParcourues)
+					if (capacity > cana.getCapacity())
+					{
+						capacity = cana.getCapacity();
+						System.out.println(cana);
+						System.out.println();
+					}
+				}
 			}
-			
-			else if (!flux.equals(temp))
-				temp = flux;
-			
-			else if(!flux.getSommetSortie().equals("P")) 
+			System.out.println(capacity);
+			System.out.println();
+			return capacity;
+		}
+//*********************************************PARCOURS DE LA LISTE DES CANALISATIONS *******************************************************************//
+		
+	public static Canalisation parcoursArray (ArrayList<Canalisation> listeCanalisations, Canalisation flux, ArrayList<Canalisation> canaParcourues )
+	{
+		Canalisation can = flux;
+		for (Canalisation cana : listeCanalisations )
+		{
+			if (cana.getSommetSortie().getFlag() == false &&
+					can.getSommetSortie().equals(cana.getSommetEntree()) 
+					&& cana.getCapacity()>0)
 			{
-				flux = sourceMax;
-				canaParcourues.get(canaParcourues.size()-1).setFlag(true);
-				canaParcourues.clear();
+				can = cana;
+				cana.getSommetSortie().setFlag(true);
+				canaParcourues.add(cana);
+
 			}
 		}
-		//System.out.println(flux);
-		//System.out.println(sourceMax);
-		return flux;
+		return can;
 	}
-	
+
 //********************************************MISE A JOUR DES CAPACITES*************************************************************************
 	
-	public static void updateCapa(ArrayList<Canalisation> canaStock, Canalisation update)
+	public static void updateCapa(ArrayList<Canalisation> canaStock, double update)
 	{
-		double temp = update.getCapacity();
 		for (Canalisation can : canaStock)
 		{
-			can.setCapacity(can.getCapacity()-temp);
-			can.setFlux(can.getFlux()+temp);
+			can.setCapacity(can.getCapacity()-update);
+			can.setFlux(can.getFlux()+update);
 		}
 	}
 	
 //*******************************************MISE A JOUR DES FLUX******************************************************************************
-	public static void updateFlux (ArrayList<Canalisation> canaInv, Canalisation update)
+	public static void updateFlux (ArrayList<Canalisation> canaInv, double update)
 	{
-		double temp = update.getFlux();
 		for (Canalisation can : canaInv)
 		{
-			can.setCapacity(can.getCapacity()+temp);
-			can.setFlux(can.getCapacity()-temp);
+			can.setCapacity(can.getCapacity()+update);
+			can.setFlux(can.getCapacity()-update);
 		}
 	}
 //************************************************RESET DES FLAG*************************************************************************
