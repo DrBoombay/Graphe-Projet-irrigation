@@ -99,7 +99,14 @@ public class MainClass {
 		
 //****************************TEST**************************************************************************		
 		Graph.flotMax(can, sources);
+		
+		System.out.println("Résultat : ");
 		for (Canalisation cana : sources)
+			System.out.println(cana);
+		
+		System.out.println();
+		
+		for (Canalisation cana : can)
 			System.out.println(cana);
 	}
 
