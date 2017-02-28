@@ -25,7 +25,7 @@ public class MainClass {
 		
 // Cannalisations Sources / Puits
 		
-		Canalisation ad = new Canalisation ("AD", 30.0, 0.00, a, d);
+		Canalisation ad = new Canalisation ("AD", 10.0, 0.00, a, d);
 		Canalisation ae = new Canalisation ("AE", 15.0, 0.00, a, e);
 		Canalisation ag = new Canalisation ("AG", 20.0, 0.00, a, g);
 		Canalisation bd = new Canalisation ("BD", 20.0, 0.00, b, d);
@@ -34,7 +34,7 @@ public class MainClass {
 		Canalisation cf = new Canalisation ("CF", 10.0, 0.00, c, f);
 		Canalisation cg = new Canalisation ("CG", 10.0, 0.00, c, g);
 		
-		Canalisation da = new Canalisation ("AD", 0.00, 30.00, d, a);
+		Canalisation da = new Canalisation ("AD", 0.00, 10.00, d, a);
 		Canalisation ea = new Canalisation ("AE", 0.00, 15.00, e, a);
 		Canalisation ga = new Canalisation ("AG", 0.00, 20.00, g, a);
 		Canalisation db = new Canalisation ("BD", 0.00, 20.00, d, b);
@@ -108,6 +108,7 @@ public class MainClass {
 		
 		for (Canalisation cana : can)
 			System.out.println(cana);
+
 	}
 
 }
