@@ -1,8 +1,9 @@
 package projectGraphe;
 
-class Sommet {
+public class Sommet {
 	protected String name;
 	protected boolean flag;
+	protected int x,y;
 	
 	public Sommet()
 	{
@@ -11,10 +12,12 @@ class Sommet {
 		
 	}
 	
-	public Sommet (String _name)
+	public Sommet (String name, int x, int y)
 	{
-		name = _name;
-		flag = false;
+		this.name = name;
+		this.flag = false;
+		this.x=x;
+		this.y=y;
 	}
 	
 	public String getName(){
@@ -25,12 +28,20 @@ class Sommet {
 		return this.flag;
 	}
 	
-	public void setName(String _name){
-		this.name = _name;
+	public int getX(){
+		return this.x;
 	}
 	
-	public void setFlag (boolean _flag){
-		this.flag = _flag;
+	public int getY(){
+		return this.y;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+	
+	public void setFlag (boolean flag){
+		this.flag = flag;
 	}
 	
 }

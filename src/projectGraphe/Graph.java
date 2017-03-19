@@ -105,7 +105,7 @@ public class Graph {
 			double capacity = Double.MAX_VALUE;
 			int i = 0;
 			Canalisation temp = new Canalisation(), canaInter = flux, sourceMax = flux;
-			while (canaInter.getSommetSortie().getName()!=("Sa"))
+			while (canaInter.getSommetSortie().getName()!=("P"))
 			{
 				System.out.println("La capacité intermédiaire est "+canaInter);
 				i++;
@@ -130,7 +130,7 @@ public class Graph {
 				
 				
 				
-				else if(canaInter.getSommetSortie().getName()!="Sa") 
+				else if(canaInter.getSommetSortie().getName()!="P") 
 				{
 					canaInter = sourceMax;
 					canaParcourues.get(canaParcourues.size()-1).setFlag(true);
@@ -149,7 +149,7 @@ public class Graph {
 
 				}
 				
-				if (canaInter.getSommetSortie().getName()=="Sa")
+				if (canaInter.getSommetSortie().getName()=="P")
 				{
 					System.out.println("Chemin trouvé ! ");
 					for (Canalisation cana : canaParcourues)
