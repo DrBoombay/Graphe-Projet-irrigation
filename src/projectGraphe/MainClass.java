@@ -12,7 +12,7 @@ public class MainClass {
 	public static void main(String[] args) {
 
 	
-// Sources et Supersource
+ //Sources et Supersource
 		
 		Sommet s = new Sommet("S", 10, 40);
 		Sommet a = new Sommet("A", 20, 60);
