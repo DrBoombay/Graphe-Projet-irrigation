@@ -3,7 +3,7 @@ package projectGraphe;
 public class Sommet {
 	protected String name;
 	protected boolean flag;
-	protected int x,y;
+	protected double x,y;
 	
 	public Sommet()
 	{
@@ -12,7 +12,7 @@ public class Sommet {
 		
 	}
 	
-	public Sommet (String name, int x, int y)
+	public Sommet (String name, double x, double y)
 	{
 		this.name = name;
 		this.flag = false;
@@ -28,11 +28,11 @@ public class Sommet {
 		return this.flag;
 	}
 	
-	public int getX(){
+	public double getX(){
 		return this.x;
 	}
 	
-	public int getY(){
+	public double getY(){
 		return this.y;
 	}
 	

@@ -2,13 +2,52 @@ package projectGraphe;
 
 import java.util.ArrayList;
 
-import javax.swing.SwingUtilities;
+import javafx.application.*;
 
-import gui.LinesEx;
+import gui.GraphGraphic;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 
-public class MainClass {
+public class MainClass extends Application {
 
+    public void start(Stage primaryStage) {
+    	
+		Sommet s = new Sommet("S", 10.0, 40.0);
+		Sommet a = new Sommet("A", 20.0, 60.0);
+		Sommet b = new Sommet("B", 20.0, 40.0);
+		Sommet c = new Sommet("C", 20.0, 20.0);
+		
+		Sommet d = new Sommet("D", 30, 70);
+		Sommet e = new Sommet("E", 30, 50);
+		Sommet f = new Sommet("F", 30, 30);
+		Sommet g = new Sommet("G", 30, 10);	
+		Sommet p = new Sommet("P", 40, 40);
+    	
+		Canalisation ad = new Canalisation ("AD", 10.0, 0.00, a, d);
+		Canalisation ae = new Canalisation ("AE", 15.0, 0.00, a, e);
+		Canalisation ag = new Canalisation ("AG", 20.0, 0.00, a, g);
+		Canalisation bd = new Canalisation ("BD", 20.0, 0.00, b, d);
+		Canalisation be = new Canalisation ("BE", 05.0, 0.00, b, e);
+		Canalisation bf = new Canalisation ("BF", 15.0, 0.00, b, f);
+		Canalisation cf = new Canalisation ("CF", 10.0, 0.00, c, f);
+		Canalisation cg = new Canalisation ("CG", 10.0, 0.00, c, g);
+    	
+		ArrayList<Canalisation> can = new ArrayList <Canalisation>();
+		
+    	Group root = new Group();
+    	Scene scene = new Scene(root, 800, 600, Color.WHITE);
+    	GraphGraphic graph = new GraphGraphic(can);
+    	root.getChildren().add(graph);
+    	primaryStage.setScene(scene);
+    	primaryStage.show();
+    	
+
+    }
+	
 	public static void main(String[] args) {
 
 	
@@ -189,9 +228,9 @@ public class MainClass {
 		for (Canalisation cana : can)
 			System.out.println(cana);
 		
-        SwingUtilities.invokeLater(() -> {
-            LinesEx ex = new LinesEx(can, sommets);
-            ex.setVisible(true);
-        });
+       launch();
+
     }
+
+
 }
