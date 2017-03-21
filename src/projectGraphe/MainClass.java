@@ -3,12 +3,14 @@ package projectGraphe;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
 import javafx.application.*;
 import gui.GraphGraphic;
+import gui.Logo;
 import gui.TextGUI;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -17,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextAreaBuilder;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -382,6 +385,10 @@ public class MainClass extends Application {
 		start.setText("Cliquer ici");
 		start.setId("start");
     	
+//		Image image1 = new Image(new FileInputStream("/GrapheProject/src/projectGraphe/trollface.png"));
+//		ImageView imw = new ImageView(image1);
+//		imw.setId("Logo");
+		
     	GraphGraphic graph = new GraphGraphic(can, sources, sommets);
     	graph.setId("graph");
     	
@@ -397,6 +404,7 @@ public class MainClass extends Application {
     	root.getChildren().add(start);
     	root.getChildren().add(graph);
     	root.getChildren().add(ta);
+//    	root.getChildren().add(imw);
     	primaryStage.setScene(scene);
     	scene.getStylesheets().add(getClass().getResource("bgr.css").toExternalForm());
     	primaryStage.show();
