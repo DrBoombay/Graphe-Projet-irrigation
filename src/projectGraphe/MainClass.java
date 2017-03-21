@@ -385,9 +385,9 @@ public class MainClass extends Application {
 		start.setText("Cliquer ici");
 		start.setId("start");
     	
-//		Image image1 = new Image(new FileInputStream("/GrapheProject/src/projectGraphe/trollface.png"));
-//		ImageView imw = new ImageView(image1);
+		ImageView imw = new ImageView(new Image(MainClass.class.getResourceAsStream("coke_cat_freak.jpg")));
 //		imw.setId("Logo");
+		imw.setVisible(true);
 		
     	GraphGraphic graph = new GraphGraphic(can, sources, sommets);
     	graph.setId("graph");
@@ -404,7 +404,7 @@ public class MainClass extends Application {
     	root.getChildren().add(start);
     	root.getChildren().add(graph);
     	root.getChildren().add(ta);
-//    	root.getChildren().add(imw);
+    	root.getChildren().add(imw);
     	primaryStage.setScene(scene);
     	scene.getStylesheets().add(getClass().getResource("bgr.css").toExternalForm());
     	primaryStage.show();
