@@ -1,3 +1,28 @@
-.root {
+#background 
+{
 	-fx-background-image: url('appli_background.png');
+}
+
+#log 
+{
+	-fx-opacity: 0.7;
+	-fx-pref-width : 700;
+	-fx-pref-height : 300;
+	-fx-translate-x : 1200;
+	-fx-translate-y : 600;
+}
+
+#start 
+{
+	-fx-pref-width : 400;
+	-fx-pref-height : 50;
+	-fx-translate-x : 0;
+	-fx-translate-y : 600;
+}
+
+#graph 
+{
+	-fx-scale-x : 1.2;
+	-fx-scale-y : 1.2;
+	
 }
