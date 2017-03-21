@@ -1,15 +1,26 @@
 package projectGraphe;
 
+import javafx.event.EventHandler;
 import java.util.ArrayList;
 
 import javafx.application.*;
 
 import gui.GraphGraphic;
+import gui.StartButton;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
+import javafx.scene.input.MouseEvent;
 
 
 public class MainClass extends Application {
@@ -26,6 +37,10 @@ public class MainClass extends Application {
 		Sommet f = new Sommet("F", 30, 30);
 		Sommet g = new Sommet("G", 30, 10);	
 		Sommet p = new Sommet("P", 40, 40);
+		
+		Canalisation sa = new Canalisation ("SA", 45.0, 0.00, s, a);
+		Canalisation sb = new Canalisation ("SB", 25.0, 0.00, s, b);
+		Canalisation sc = new Canalisation ("SC", 20.0, 0.00, s, c);
     	
 		Canalisation ad = new Canalisation ("AD", 10.0, 0.00, a, d);
 		Canalisation ae = new Canalisation ("AE", 15.0, 0.00, a, e);
@@ -35,15 +50,69 @@ public class MainClass extends Application {
 		Canalisation bf = new Canalisation ("BF", 15.0, 0.00, b, f);
 		Canalisation cf = new Canalisation ("CF", 10.0, 0.00, c, f);
 		Canalisation cg = new Canalisation ("CG", 10.0, 0.00, c, g);
+		Canalisation dp = new Canalisation ("DP", 30.0, 0.00, d, p);
+		Canalisation ep = new Canalisation ("EP", 10.0, 0.00, e, p);
+		Canalisation fp = new Canalisation ("FP", 20.0, 0.00, f, p);
+		Canalisation gp = new Canalisation ("GP", 30.0, 0.00, g, p);
     	
 		ArrayList<Canalisation> can = new ArrayList <Canalisation>();
+		ArrayList<Sommet> sommets = new ArrayList<Sommet>();
 		
-    	Group root = new Group();
-    	Scene scene = new Scene(root, 800, 600, Color.WHITE);
-    	GraphGraphic graph = new GraphGraphic(can);
-    	root.getChildren().add(graph);
+		can.add(ad);
+		can.add(ae);
+		can.add(ag);
+		can.add(bd);
+		can.add(be);
+		can.add(bf);
+		can.add(cf);
+		can.add(cg);
+		can.add(dp);
+		can.add(ep);
+		can.add(fp);
+		can.add(gp);
+		can.add(sa);
+		can.add(sb);
+		can.add(sc);
+		
+		sommets.add(s);
+		sommets.add(a);
+		sommets.add(b);
+		sommets.add(c);
+		sommets.add(d);
+		sommets.add(e);
+		sommets.add(f);
+		sommets.add(g);
+		sommets.add(p);
+		
+    	VBox root = new VBox();
+    	Scene scene = new Scene(root, 800, 600);
+
+//    	BackgroundImage BI = new BackgroundImage(image, BackgroundRepeat.REPEAT, 
+//				BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+//		         BackgroundSize.DEFAULT);
+//    	
+//    	Background bg = new Background(BI);
+    	
+    	StartButton start = new StartButton();
+    	GraphGraphic graph = new GraphGraphic(can, sommets);
+    	
+    	start.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            public void handle(MouseEvent me) {
+            	GraphGraphic graph = new GraphGraphic(can, sommets);
+                root.getChildren().add(graph);
+            }
+        });
+    	
+    	root.setId("background");
+    	root.getChildren().add(start);
+    	//root.getChildren().add(graph);
     	primaryStage.setScene(scene);
+    	scene.getStylesheets().add(getClass().getResource("bgr.css").toExternalForm());
     	primaryStage.show();
+    	
+
+
     	
 
     }
