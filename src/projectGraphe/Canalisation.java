@@ -58,7 +58,7 @@ public class Canalisation {
 		return this.flagCanna;
 	}
 	
-	/********************* S E T T E R S ****************************/
+	//********************* S E T T E R S ****************************/
 	
 	public void setFlux(double _flux){
 		this.flux = _flux;

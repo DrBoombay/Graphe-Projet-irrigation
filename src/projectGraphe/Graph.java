@@ -1,6 +1,7 @@
 package projectGraphe;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Graph {
 	
@@ -13,14 +14,16 @@ public class Graph {
 			ArrayList<Canalisation> canaParcourues = new ArrayList<Canalisation>();
 			ArrayList<Canalisation> canaInv = new ArrayList<Canalisation>();
 			int i = 0;
-			
-			
+
+			source = start(sources);
+      
 			while (source.getCapacity()>0 && source.getFlag()==false) 
 			{
 				source = start(sources);
 				System.out.println("Nouveau tour !");
 				System.out.println();
 				
+
 				System.out.println("Canalisation de départ choisie : "+source);
 				System.out.println();
 				//canaParcourues.add(source);
@@ -72,6 +75,8 @@ public class Graph {
 				System.out.println();
 				source = start(sources);
 				System.out.println(sources);
+
+				source = start(sources);
 
 			}
 			
@@ -176,10 +181,12 @@ public class Graph {
 	public static Canalisation parcoursArray (ArrayList<Canalisation> listeCanalisations, Canalisation flux, ArrayList<Canalisation> canaParcourues )
 	{
 		Canalisation can = flux;
+
+
 		if (!canaParcourues.contains(can))
 		canaParcourues.add(flux);
 		can.getSommetSortie().setFlag(true);
-		
+
 		for (Canalisation cana : listeCanalisations )
 		{
 			if (cana.getSommetSortie().getFlag() == false && cana.getFlag() == false &&
@@ -208,7 +215,7 @@ public class Graph {
 		}
 	}
 	
-//*******************************************MISE A JOUR DES FLUX******************************************************************************
+//*******************************************MISE A JOUR DES FLUX***************************************************
 	public static void updateFlux (ArrayList<Canalisation> canaInv, double update)
 	{
 		for (Canalisation can : canaInv)
@@ -217,7 +224,7 @@ public class Graph {
 			can.setFlux(can.getFlux()-update);
 		}
 	}
-//************************************************RESET DES FLAG*************************************************************************
+//************************************************RESET DES FLAG****************************************************
 	
 	public static void updateFlag(ArrayList<Canalisation> listeCanalisations)
 	{
@@ -228,7 +235,7 @@ public class Graph {
 		}
 	}
 	
-//********************************************RECUPERATION DES CANALISATIONS CONTRAIRES*******************************************************
+//********************************************RECUPERATION DES CANALISATIONS CONTRAIRES*****************************
 	public static ArrayList<Canalisation> getCanaInv(ArrayList<Canalisation> listeCana, ArrayList<Canalisation> canaParcourues)
 	{
 		ArrayList<Canalisation> canaInv = new ArrayList<Canalisation>();
@@ -244,6 +251,7 @@ public class Graph {
 	}
 	
 	
+
 //************************************************RESET DES FLAG DES SOMMMETS*************************************************************************
 	
 		public static void updateFlagSommets(ArrayList<Canalisation> listeCanalisations)
