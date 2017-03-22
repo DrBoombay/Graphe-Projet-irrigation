@@ -1,6 +1,8 @@
 package projectGraphe;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class MainClass {
@@ -52,18 +54,17 @@ public class MainClass {
 // Cannalisations Puits / Superpuits
 		
 
-		Canalisation dp = new Canalisation ("DP", 30.0, 0.00, d, p);
-		Canalisation ep = new Canalisation ("EP", 10.0, 0.00, e, p);
-		Canalisation fp = new Canalisation ("FP", 20.0, 0.00, f, p);
-		Canalisation gp = new Canalisation ("GP", 30.0, 0.00, g, p);
+		Canalisation dp = new Canalisation ("DP", 3.0, 0.00, d, p);
+		Canalisation ep = new Canalisation ("EP", 2.0, 0.00, e, p);
+		Canalisation fp = new Canalisation ("FP", 4.0, 0.00, f, p);
+		Canalisation gp = new Canalisation ("GP", 1.0, 0.00, g, p);
 
 		
 		
 //*************************LISTES CANNALISATIONS*********************************************************
 		ArrayList<Canalisation> sources = new ArrayList <Canalisation>();
 		ArrayList<Canalisation> can = new ArrayList <Canalisation>();
-//		ArrayList<Canalisation> 
-		
+//		ArrayList<Canalisation>
 		
 //***************************AJOUT DES SOURCES**********************************************************
 		sources.add(sa);
@@ -99,7 +100,6 @@ public class MainClass {
 		
 //****************************TEST**************************************************************************		
 		Graph.flotMax(can, sources);
-		
 		System.out.println("Résultat : ");
 		for (Canalisation cana : sources)
 			System.out.println(cana);
@@ -108,6 +108,27 @@ public class MainClass {
 		
 		for (Canalisation cana : can)
 			System.out.println(cana);
+		
+		// *****************affichage des élements de fruitsEtLegumesList************************************
+		
+		FruitsEtLegumesDAO fruitsEtLegumesDAO = new FruitsEtLegumesDAO();
+		List<FruitsEtLegumes> fruitsEtLegumesList = fruitsEtLegumesDAO.retrieveAllfruitsEtLegumesList();
+		
+		for (FruitsEtLegumes fruitsEtLegumes : fruitsEtLegumesList) {
+			System.out.println(fruitsEtLegumes);
+		}
+		System.out.println();
+	//**************Try Compare to****************
+		List<Canalisation> lastCapacity =new ArrayList <Canalisation>();
+		lastCapacity.add(dp);lastCapacity.add(ep);lastCapacity.add(fp);lastCapacity.add(gp);
+		
+		List<FruitsEtLegumesByPuits> vegeValable= new ArrayList<FruitsEtLegumesByPuits>();
+		vegeValable=FruitsEtLegumesByPuits.compareNeedAndCapacity(fruitsEtLegumesList, lastCapacity);
+		
+		for (FruitsEtLegumesByPuits fruitsEtLegumesByPuits : vegeValable) {
+			System.out.println(fruitsEtLegumesByPuits.displayFruitsEtLegumesByCanalisation());
+		}
+		
 	}
 
 }
