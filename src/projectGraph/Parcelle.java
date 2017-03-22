@@ -1,4 +1,4 @@
-package projectGraphe;
+package src.projectGraph;
 
 class Parcelle {
 //****************************************DEFINITION DES PARAMETRES**********************

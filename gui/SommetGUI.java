@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import projectGraphe.Sommet;
+import src.projectGraph.Sommet;
 
 public class SommetGUI extends Parent {
 	private Sommet sommet;

@@ -1,4 +1,4 @@
-package projectGraphe;
+package src.projectGraph;
 
 import java.util.ArrayList;
 
@@ -86,8 +86,7 @@ public class Canalisation {
 	
 	public String toString()
 	{
-		return this.id+" de capacite : "+this.capacity+". Flux : "+this.flux+". Sommet d'entree : "+this.sommetEntree.getName()+". Sommet sortie : "
-				+this.sommetSortie.getName()+". FLAG :"+this.flagCanna;
+		return this.id+" de capacite : "+this.capacity+". Flux : "+this.flux+".";
 	}
 	
 }

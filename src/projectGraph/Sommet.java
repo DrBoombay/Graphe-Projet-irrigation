@@ -1,4 +1,4 @@
-package projectGraphe;
+package src.projectGraph;
 
 public class Sommet {
 	protected String name;

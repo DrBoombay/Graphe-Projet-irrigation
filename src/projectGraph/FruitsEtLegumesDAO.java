@@ -1,4 +1,4 @@
-package projectGraphe;
+package src.projectGraph;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,10 +11,10 @@ import java.util.List;
 
 public class FruitsEtLegumesDAO {
 
-	String url = "jdbc:mysql://localhost:3306/Culture";
+	String url = "jdbc:mariadb://localhost:3306/culture";
 	String user = "root";
-	String password = "cn9s&c-gwaYa";
-	String driver = "com.mysql.jdbc.Driver";
+	String password = "Coldlove1";
+	String driver = "org.mariadb.jdbc.Driver";
 
 
 	public List<FruitsEtLegumes> retrieveAllfruitsEtLegumesList(){
@@ -31,7 +31,7 @@ public class FruitsEtLegumesDAO {
 			ResultSet	result = state.executeQuery("SELECT * FROM FruitsEtLegumes");
 
 			while(result.next()){
-				
+
 				// attribution des paramettres d'objets
 				FruitsEtLegumes fruitsEtLegumes = new FruitsEtLegumes();
 				fruitsEtLegumes.setNomVege(result.getString("NomVege"));
