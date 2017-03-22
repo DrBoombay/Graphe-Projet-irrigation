@@ -372,12 +372,20 @@ public class MainClass extends Application {
 //****************************TEST**************************************************************************		
 		
     	Pane root = new Pane();
+//    	TextGUI test = new TextGUI(new TextArea());
     	TextArea ta = new TextArea();
+    	TextArea tb = new TextArea();
         ta.setLayoutY(40);
         ta.setVisible(true);
         ta.setWrapText(true);
         ta.setEditable(false);
         ta.setId("log");
+        
+        tb.setLayoutY(40);
+        tb.setVisible(true);
+        tb.setWrapText(true);
+        tb.setEditable(false);
+        tb.setId("legumes");
 
     	Scene scene = new Scene(root, 800, 600);
     	
@@ -386,7 +394,7 @@ public class MainClass extends Application {
 		start.setId("start");
     	
 		ImageView imw = new ImageView(new Image(MainClass.class.getResourceAsStream("coke_cat_freak.jpg")));
-//		imw.setId("Logo");
+		imw.setId("Logo");
 		imw.setVisible(true);
 		
     	GraphGraphic graph = new GraphGraphic(can, sources, sommets);
@@ -404,6 +412,7 @@ public class MainClass extends Application {
     	root.getChildren().add(start);
     	root.getChildren().add(graph);
     	root.getChildren().add(ta);
+    	root.getChildren().add(tb);
     	root.getChildren().add(imw);
     	primaryStage.setScene(scene);
     	scene.getStylesheets().add(getClass().getResource("bgr.css").toExternalForm());

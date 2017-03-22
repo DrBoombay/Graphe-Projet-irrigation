@@ -44,7 +44,7 @@ public class GraphGraphic extends Parent
 //		path.maxHeight(300);
 //		path.maxWidth(300);
 		path.setLayoutX(800);
-		path.setStrokeWidth(5);
+		path.setStrokeWidth(3);
 		path.setStroke(Color.BISQUE);
 		this.getChildren().add(path);
 		

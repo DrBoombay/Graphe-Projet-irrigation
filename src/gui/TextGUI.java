@@ -5,9 +5,11 @@ import javafx.scene.control.TextArea;
 
 public class TextGUI extends Parent {
 	
-	public TextGUI()
+	private TextArea ta = new TextArea();
+	
+	public TextGUI(TextArea ta)
 	{
-		TextArea ta = new TextArea();
+		this.ta=ta;
         ta.setLayoutX(200);
         ta.setLayoutY(40);
         ta.setPrefSize(550, 500);
@@ -15,5 +17,10 @@ public class TextGUI extends Parent {
         ta.setWrapText(true);
         ta.setEditable(false);
 	}
+
+	public TextArea getTa() {
+		return ta;
+	}
+	
 
 }

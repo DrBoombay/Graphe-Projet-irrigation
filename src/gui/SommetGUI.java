@@ -18,7 +18,7 @@ public class SommetGUI extends Parent {
 		Text text = new Text(sommet.getName());
 		point.setCenterX(sommet.getX()*20);
 		point.setCenterY(sommet.getY()*5);
-		point.setRadius(5);
+		point.setRadius(7);
 		point.setFill(Color.BLACK);
 		point.setStroke(Color.BLACK);
 		point.setLayoutX(800);
